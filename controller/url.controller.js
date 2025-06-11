@@ -23,7 +23,7 @@ const generateShortUrl = async (req, res) => {
 
     res.json({
       success: true,
-      shortUrl: `http://localhost:8080/${id}`,
+      shortUrl: `https://url-shortener-backend-vt1k.onrender.com/${id}`,
     });
   } catch (error) {
     res.status(400).json({
@@ -41,9 +41,10 @@ const redirectToMainUrl = async (req, res) => {
       return res.status(404).send("Short URL not found");
     }
     urlEntry.clickCount += 1;
-    await urlEntry.save();  
+    await urlEntry.save();
     res.redirect(urlEntry.originalUrl);
-  } catch (error) {x``
+  } catch (error) {
+    x``;
     console.error("Error during redirect:", error);
     res.status(500).send("Server Error");
   }
